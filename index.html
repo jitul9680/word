@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript">
+  $(document).ready(function() {
+    $("#word_count").on('keyup', function() {
+        var words = this.value.match(/\S+/g).length;
+        if (words > 200) {
+            var trimmed = $(this).val().split(/\s+/, 200).join(" ");
+            $(this).val(trimmed + " ");
+        }
+        else {
+            $('#display_count').text(words);
+            $('#word_left').text(200-words);
+        }
+    });
+ }); 
+</script>
+	<title>word counter</title>
+</head>
+<body>
+	<textarea placeholder="Enter your text here... " name="txtScript" id="word_count" cols="60" rows="20"></textarea>
+<br>
+Total word count: <span id="display_count">0</span> words. Words left: <span id="word_left">200</span>
+</body>
+
+
+</html>
